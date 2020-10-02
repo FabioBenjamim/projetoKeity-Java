@@ -1,17 +1,24 @@
 package com.agendamento.consulta.consultorio;
 
+import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.agendamento.consulta.medico.MedicoEntity;
+
 	@Entity
-	@Table(name = "Consultorio" )
+	@Table(name = "CONSULTORIOS" )
 	public class ConsultorioEntity {
 		
 		@Id
@@ -28,6 +35,12 @@ import org.hibernate.annotations.GenericGenerator;
 		
 		@Column
 		private String pontoReferencia;
+		
+		@ManyToMany(cascade = CascadeType.ALL)
+		  @JoinTable(name="CONSULTORIO_MEDICO",
+		             joinColumns={@JoinColumn(name="idConsultorio")},
+		             inverseJoinColumns={@JoinColumn(name="idMedico")})
+		public List<MedicoEntity> medicos;
 
 		public UUID getIdConsultorio() {
 			return idConsultorio;

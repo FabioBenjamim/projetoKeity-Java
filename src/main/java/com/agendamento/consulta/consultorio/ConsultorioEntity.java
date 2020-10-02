@@ -1,6 +1,7 @@
 package com.agendamento.consulta.consultorio;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.CascadeType;
@@ -17,62 +18,69 @@ import org.hibernate.annotations.GenericGenerator;
 
 import com.agendamento.consulta.medico.MedicoEntity;
 
-	@Entity
-	@Table(name = "CONSULTORIOS" )
-	public class ConsultorioEntity {
-		
-		@Id
-	    @GeneratedValue(generator = "UUID")
-	    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-	    @Column(name = "idConsultorio", nullable = false, length = 255, insertable = true, updatable = true)
-	    private UUID idConsultorio;
-		
-		@Column
-		private String endereco;
-		
-		@Column
-		private int numero;
-		
-		@Column
-		private String pontoReferencia;
-		
-		@ManyToMany(cascade = CascadeType.ALL)
-		  @JoinTable(name="CONSULTORIO_MEDICO",
-		             joinColumns={@JoinColumn(name="idConsultorio")},
-		             inverseJoinColumns={@JoinColumn(name="idMedico")})
-		public List<MedicoEntity> medicos;
+@Entity
+@Table(name = "CONSULTORIOS")
+public class ConsultorioEntity {
 
-		public UUID getIdConsultorio() {
-			return idConsultorio;
-		}
+	@Id
+	@GeneratedValue(generator = "UUID")
+	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+	@Column(name = "idConsultorio", nullable = false, length = 255, insertable = true, updatable = true)
+	private UUID idConsultorio;
 
-		public void setIdConsultorio(UUID idConsultorio) {
-			this.idConsultorio = idConsultorio;
-		}
+	@Column
+	private String endereco;
 
-		public String getEndereco() {
-			return endereco;
-		}
+	@Column
+	private String numero;
 
-		public void setEndereco(String endereco) {
-			this.endereco = endereco;
-		}
+	@Column
+	private String pontoReferencia;
 
-		public int getNumero() {
-			return numero;
-		}
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "CONSULTORIO_MEDICO", joinColumns = {
+			@JoinColumn(name = "idConsultorio") }, 
+			inverseJoinColumns = { @JoinColumn(name = "idMedico") })
+	public List<MedicoEntity> medicos;
 
-		public void setNumero(int numero) {
-			this.numero = numero;
-		}
+	public UUID getIdConsultorio() {
+		return idConsultorio;
+	}
 
-		public String getPontoReferencia() {
-			return pontoReferencia;
-		}
+	public void setIdConsultorio(UUID idConsultorio) {
+		this.idConsultorio = idConsultorio;
+	}
 
-		public void setPontoReferencia(String pontoReferencia) {
-			this.pontoReferencia = pontoReferencia;
-		}
-		
-		
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public List<MedicoEntity> getMedicos() {
+		return medicos;
+	}
+	
+	public void setMedicos(List<MedicoEntity> medicos) {
+		this.medicos = medicos;
+	}
+
+	public String getPontoReferencia() {
+		return pontoReferencia;
+	}
+
+	public void setPontoReferencia(String pontoReferencia) {
+		this.pontoReferencia = pontoReferencia;
+	}
+
 }

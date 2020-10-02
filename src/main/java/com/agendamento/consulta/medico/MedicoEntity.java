@@ -71,7 +71,7 @@ public class MedicoEntity {
 	@Column
 	private String especializacao;
 	
-	@ManyToMany(mappedBy="MEDICOS", cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy="medicos", cascade = CascadeType.ALL)
 	public List<ConsultorioEntity> consultorios;
 
 	

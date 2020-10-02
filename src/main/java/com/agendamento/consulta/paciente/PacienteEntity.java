@@ -1,5 +1,7 @@
 package com.agendamento.consulta.paciente;
 
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.context.annotation.Primary;
 import com.agendamento.consulta.util.SexoEnum;
 
@@ -16,8 +19,10 @@ import com.agendamento.consulta.util.SexoEnum;
 public class PacienteEntity {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idPaciente;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "idPaciente", nullable = false, length = 255, insertable = true, updatable = true)
+    private UUID idPaciente;
 	
 	@Column
 	private String nome;
@@ -66,14 +71,14 @@ public class PacienteEntity {
 		this.rg = rg;
 	}
 	
-	public Long getIdPaciente() {
+	public UUID getIdPaciente() {
 		return idPaciente;
 	}
 	
-	public void setIdPaciente(Long idPaciente) {
+	public void setIdPaciente(UUID idPaciente) {
 		this.idPaciente = idPaciente;
 	}
-		
+	
 	public String getCpf() {
 		return cpf;
 	}

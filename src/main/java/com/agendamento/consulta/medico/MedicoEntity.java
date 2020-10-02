@@ -1,11 +1,15 @@
 package com.agendamento.consulta.medico;
 
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import com.agendamento.consulta.util.SexoEnum;
 
@@ -14,8 +18,10 @@ import com.agendamento.consulta.util.SexoEnum;
 public class MedicoEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idMedico;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "idMedico", nullable = false, length = 255, insertable = true, updatable = true)
+    private UUID idMedico;
 	
 	@Column
 	private String nome;
@@ -94,11 +100,11 @@ public class MedicoEntity {
 		this.rg = rg;
 	}
 	
-	public Long getIdMedico() {
+	public UUID getIdMedico() {
 		return idMedico;
 	}
 	
-	public void setIdMedico(Long idMedico) {
+	public void setIdMedico(UUID idMedico) {
 		this.idMedico = idMedico;
 	}
 

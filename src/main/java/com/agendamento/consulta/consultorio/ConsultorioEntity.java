@@ -1,20 +1,18 @@
 package com.agendamento.consulta.consultorio;
 
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.GenericGenerator;
 
 import com.agendamento.consulta.medico.MedicoEntity;
 
@@ -22,11 +20,18 @@ import com.agendamento.consulta.medico.MedicoEntity;
 @Table(name = "CONSULTORIOS")
 public class ConsultorioEntity {
 
+	public ConsultorioEntity() {
+
+	}
+
+	public void atualizar(ConsultorioEntity consultorio) {
+		this.pontoReferencia = consultorio.getPontoReferencia();
+		this.medicos = consultorio.getMedicos();
+	}
+
 	@Id
-	@GeneratedValue(generator = "UUID")
-	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-	@Column(name = "idConsultorio", nullable = false, length = 255, insertable = true, updatable = true)
-	private UUID idConsultorio;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idConsultorio;
 
 	@Column
 	private String endereco;
@@ -39,15 +44,14 @@ public class ConsultorioEntity {
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "CONSULTORIO_MEDICO", joinColumns = {
-			@JoinColumn(name = "idConsultorio") }, 
-			inverseJoinColumns = { @JoinColumn(name = "idMedico") })
+			@JoinColumn(name = "idConsultorio") }, inverseJoinColumns = { @JoinColumn(name = "idMedico") })
 	public List<MedicoEntity> medicos;
 
-	public UUID getIdConsultorio() {
+	public Long getIdConsultorio() {
 		return idConsultorio;
 	}
 
-	public void setIdConsultorio(UUID idConsultorio) {
+	public void setIdConsultorio(Long idConsultorio) {
 		this.idConsultorio = idConsultorio;
 	}
 
@@ -70,7 +74,7 @@ public class ConsultorioEntity {
 	public List<MedicoEntity> getMedicos() {
 		return medicos;
 	}
-	
+
 	public void setMedicos(List<MedicoEntity> medicos) {
 		this.medicos = medicos;
 	}

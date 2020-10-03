@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.agendamento.consulta.agenda.AgendaEntity;
 import com.agendamento.consulta.agenda.AgendaService;
+import com.agendamento.consulta.agenda.api.dto.AgendaDTO;
 import com.agendamento.consulta.consultorio.ConsultorioEntity;
 
 @RestController
@@ -33,7 +34,7 @@ public class AgendaRest {
 	}
 	
 	@PutMapping
-	public ResponseEntity atualiza(@RequestBody AgendaEntity agenda) {
+	public ResponseEntity atualiza(@RequestBody AgendaDTO agenda) {
 		return _service.atualizaAgenda(agenda);
 	}
 }

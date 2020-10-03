@@ -3,19 +3,20 @@ package com.agendamento.consulta.agenda;
 import java.util.List;
 import java.util.Optional;
 
+import org.hibernate.result.UpdateCountOutput;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.agendamento.consulta.consultorio.ConsultorioEntity;
+import com.agendamento.consulta.agenda.api.dto.AgendaDTO;
 
 @Service
 public class AgendaService {
 
 	@Autowired
 	AgendaRepository _repository;
-	
+
 	@Autowired
 	JornadaDeTrabalhoService _serviceJornada;
 
@@ -32,12 +33,14 @@ public class AgendaService {
 		}
 	}
 
-	public ResponseEntity atualizaAgenda(AgendaEntity agenda) {
+	public ResponseEntity atualizaAgenda(AgendaDTO agenda) {
 		try {
 			if (agenda.getIdAgenda() != null) {
 				Optional<AgendaEntity> uptadeConsultorio = _repository.findById(agenda.getIdAgenda());
-				_serviceJornada.salva(agenda.getSemana());
-				uptadeConsultorio.get().getSemana().addAll(agenda.getSemana());
+				JornadaDeTrabalhoEntity jornada = new JornadaDeTrabalhoEntity(agenda.getSemana().getDiaDaSemana(),
+						agenda.getSemana().getInicioExpediente(), agenda.getSemana().getFimExpediente());
+				_serviceJornada.salva(jornada);
+				uptadeConsultorio.get().getSemana().add(jornada);
 				_repository.save(uptadeConsultorio.get());
 				return new ResponseEntity(HttpStatus.OK);
 			} else {

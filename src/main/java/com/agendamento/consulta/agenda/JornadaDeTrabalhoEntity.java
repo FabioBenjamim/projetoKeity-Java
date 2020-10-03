@@ -25,8 +25,8 @@ public class JornadaDeTrabalhoEntity {
 			String fimExpediente) throws ParseException {
 		super();
 		this.diaDaSemana = diaDaSemana;
-		this.inicioExpediente = new SimpleDateFormat("HH:mm").parse(inicioExpediente);
-		this.fimExpediente = new SimpleDateFormat("HH:mm").parse(fimExpediente);
+		this.inicioExpediente = inicioExpediente;
+		this.fimExpediente = fimExpediente;
 	}
 
 	@Id
@@ -37,10 +37,10 @@ public class JornadaDeTrabalhoEntity {
 	private DiaDaSemanaEnum diaDaSemana;
 
 	@Column
-	private Date inicioExpediente;
+	private String inicioExpediente;
 
 	@Column
-	private Date fimExpediente;
+	private String fimExpediente;
 
 	public Long getIdJornada() {
 		return idJornada;
@@ -58,19 +58,19 @@ public class JornadaDeTrabalhoEntity {
 		this.diaDaSemana = diaDaSemana;
 	}
 
-	public Date getInicioExpediente() {
+	public String getInicioExpediente() {
 		return inicioExpediente;
 	}
-
-	public void setInicioExpediente(Date inicioExpediente) {
+	
+	public void setInicioExpediente(String inicioExpediente) {
 		this.inicioExpediente = inicioExpediente;
 	}
-
-	public Date getFimExpediente() {
+	
+	public String getFimExpediente() {
 		return fimExpediente;
 	}
-
-	public void setFimExpediente(Date fimExpediente) {
+	
+	public void setFimExpediente(String fimExpediente) {
 		this.fimExpediente = fimExpediente;
 	}
 

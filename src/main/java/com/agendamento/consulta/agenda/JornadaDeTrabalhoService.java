@@ -25,7 +25,7 @@ public class JornadaDeTrabalhoService {
 		}
 	}
 
-	public void salva(List<JornadaDeTrabalhoEntity> jornada) {
-		_repository.saveAll(jornada);
+	public void salva(JornadaDeTrabalhoEntity jornada) {
+		_repository.save(jornada);
 	}
 }

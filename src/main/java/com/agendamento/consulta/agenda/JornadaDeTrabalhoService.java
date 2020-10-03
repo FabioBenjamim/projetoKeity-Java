@@ -7,8 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-
-
 @Service
 public class JornadaDeTrabalhoService {
 	@Autowired
@@ -27,7 +25,7 @@ public class JornadaDeTrabalhoService {
 		}
 	}
 
-	public void salva(List<JornadaDeTrabalhoEntity> semana) {
-		_repository.saveAll(semana);
+	public void salva(List<JornadaDeTrabalhoEntity> jornada) {
+		_repository.saveAll(jornada);
 	}
 }

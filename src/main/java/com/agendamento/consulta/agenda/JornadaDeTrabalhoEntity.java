@@ -1,5 +1,7 @@
 package com.agendamento.consulta.agenda;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -14,6 +16,18 @@ import com.agendamento.consulta.util.DiaDaSemanaEnum;
 @Entity
 @Table(name = "JORNADADETRABALHO")
 public class JornadaDeTrabalhoEntity {
+	
+	public JornadaDeTrabalhoEntity() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public JornadaDeTrabalhoEntity(DiaDaSemanaEnum diaDaSemana, String inicioExpediente,
+			String fimExpediente) throws ParseException {
+		super();
+		this.diaDaSemana = diaDaSemana;
+		this.inicioExpediente = new SimpleDateFormat("HH:mm").parse(inicioExpediente);
+		this.fimExpediente = new SimpleDateFormat("HH:mm").parse(fimExpediente);
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

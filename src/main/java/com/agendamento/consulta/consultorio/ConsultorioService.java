@@ -39,4 +39,19 @@ public class ConsultorioService {
 			return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
+	public ResponseEntity adicionaMedico(ConsultorioEntity consultorio) {
+		try {
+			if(consultorio.getIdConsultorio() != null) {
+				Optional<ConsultorioEntity> uptadeConsultorio = _repository.findById(consultorio.getIdConsultorio());
+				uptadeConsultorio.get().getMedicos().addAll(consultorio.getMedicos());
+				_repository.save(uptadeConsultorio.get());
+				return new ResponseEntity(HttpStatus.OK);
+			} else {
+				return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+		} catch (Exception e) {
+			return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 }

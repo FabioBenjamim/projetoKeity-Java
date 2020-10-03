@@ -26,7 +26,6 @@ public class ConsultorioEntity {
 
 	public void atualizar(ConsultorioEntity consultorio) {
 		this.pontoReferencia = consultorio.getPontoReferencia();
-		this.medicos = consultorio.getMedicos();
 	}
 
 	@Id

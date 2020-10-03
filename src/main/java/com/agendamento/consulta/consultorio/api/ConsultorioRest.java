@@ -36,4 +36,8 @@ public class ConsultorioRest {
 		return _service.atualizateConsultorio(consultorio);
 	}
 	
+	@PutMapping("/medicos")
+	public ResponseEntity adicionaMedicoConsultorio(@RequestBody ConsultorioEntity consultorio) {
+		return _service.adicionaMedico(consultorio);
+	}
 }

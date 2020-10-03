@@ -46,11 +46,6 @@ public class ConsultorioEntity {
 	@Column
 	private String pontoReferencia;
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "CONSULTORIO_MEDICO", joinColumns = {
-			@JoinColumn(name = "idConsultorio") }, inverseJoinColumns = { @JoinColumn(name = "idMedico") })
-	public List<MedicoEntity> medicos;
-
 	@OneToMany
 	@JoinTable(name = "CONSULTORIO_AGENDA", joinColumns = {
 			@JoinColumn(name = "idConsultorio") }, inverseJoinColumns = { @JoinColumn(name = "idAgenda") })
@@ -78,14 +73,6 @@ public class ConsultorioEntity {
 
 	public void setNumero(String numero) {
 		this.numero = numero;
-	}
-
-	public List<MedicoEntity> getMedicos() {
-		return medicos;
-	}
-
-	public void setMedicos(List<MedicoEntity> medicos) {
-		this.medicos = medicos;
 	}
 
 	public String getPontoReferencia() {

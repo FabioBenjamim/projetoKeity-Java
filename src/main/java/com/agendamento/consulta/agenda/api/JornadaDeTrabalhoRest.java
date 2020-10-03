@@ -18,14 +18,14 @@ import com.agendamento.consulta.agenda.JornadaDeTrabalhoService;
 public class JornadaDeTrabalhoRest {
 	@Autowired
 	JornadaDeTrabalhoService _service;
-	
+
 	@GetMapping
 	public List<JornadaDeTrabalhoEntity> getJornadaDeTrabalho() {
 		return _service.getJornadaDeTrabalho();
 	}
-	
+
 	@PostMapping
-	public void createJornadaDeTrabalho(@RequestBody JornadaDeTrabalhoEntity jornadaDeTrabalho) {
-	 //_service.createJornadaDeTrabalho(jornadaDeTrabalho);
+	public ResponseEntity createJornadaDeTrabalho(@RequestBody JornadaDeTrabalhoEntity jornadaDeTrabalho) {
+		return _service.createJornadaDeTrabalho(jornadaDeTrabalho);
 	}
 }

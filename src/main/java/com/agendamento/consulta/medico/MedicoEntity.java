@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -69,8 +71,18 @@ public class MedicoEntity {
 	@Column
 	private String especializacao;
 
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "MEDICO_CONSULTORIO", joinColumns = {
+			@JoinColumn(name = "idMedico") }, inverseJoinColumns = { @JoinColumn(name = "idConsultorio") })
+	public List<ConsultorioEntity> consultorios;
 
+	public List<ConsultorioEntity> getConsultorios() {
+		return consultorios;
+	}
 	
+	public void setConsultorios(List<ConsultorioEntity> consultorios) {
+		this.consultorios = consultorios;
+	}
 
 	public String getEspecializacao() {
 		return especializacao;

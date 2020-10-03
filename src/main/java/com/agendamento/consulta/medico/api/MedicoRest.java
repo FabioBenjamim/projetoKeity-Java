@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +29,11 @@ public class MedicoRest {
 	@PostMapping
 	public ResponseEntity createMedico(@RequestBody MedicoEntity medico) {
 		return _service.createMedicos(medico);
+	}
+	
+	@PutMapping("/consultorios")
+	public ResponseEntity adicionaConsultorios(@RequestBody MedicoEntity medico) {
+		return _service.adicionaConsultorios(medico);
 	}
 	
 }

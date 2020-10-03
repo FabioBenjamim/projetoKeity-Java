@@ -18,12 +18,16 @@ public class JornadaDeTrabalhoService {
 		return _repository.findAll();
 	}
 
-	public ResponseEntity createConsultorios(JornadaDeTrabalhoEntity jornadaDeTrabalho) {
+	public ResponseEntity createJornadaDeTrabalho(JornadaDeTrabalhoEntity jornadaDeTrabalho) {
 		try {
 			_repository.save(jornadaDeTrabalho);
 			return new ResponseEntity(HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+	}
+
+	public void salva(List<JornadaDeTrabalhoEntity> semana) {
+		_repository.saveAll(semana);
 	}
 }

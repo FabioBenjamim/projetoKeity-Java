@@ -28,9 +28,6 @@ public class JornadaDeTrabalhoEntity {
 	@Column
 	private Date fimExpediente;
 
-	@Column
-	private String nomeEscritorio;
-
 	public Long getIdJornada() {
 		return idJornada;
 	}
@@ -61,14 +58,6 @@ public class JornadaDeTrabalhoEntity {
 
 	public void setFimExpediente(Date fimExpediente) {
 		this.fimExpediente = fimExpediente;
-	}
-
-	public String getNomeEscritorio() {
-		return nomeEscritorio;
-	}
-
-	public void setNomeEscritorio(String nomeEscritorio) {
-		this.nomeEscritorio = nomeEscritorio;
 	}
 
 }

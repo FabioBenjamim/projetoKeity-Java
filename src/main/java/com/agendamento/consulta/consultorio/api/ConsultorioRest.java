@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.agendamento.consulta.consultorio.ConsultorioEntity;
@@ -36,8 +37,13 @@ public class ConsultorioRest {
 		return _service.atualizateConsultorio(consultorio);
 	}
 	
-	@PutMapping("/medicos")
-	public ResponseEntity adicionaMedicoConsultorio(@RequestBody ConsultorioEntity consultorio) {
-		return _service.adicionaMedico(consultorio);
+//	@PutMapping("/medicos")
+//	public ResponseEntity adicionaMedicoConsultorio(@RequestBody ConsultorioEntity consultorio) {
+//		return _service.adicionaMedico(consultorio);
+//	}
+	
+	@PutMapping("/agenda")
+	public ResponseEntity adicionaAgendaConsultorio(@RequestParam Long idConsultorio, @RequestParam Long idMedico) {
+		return _service.adicionaAgenda(idConsultorio, idMedico);
 	}
 }

@@ -26,7 +26,6 @@ public class AgendaEntity {
 	
 	public AgendaEntity(String nomeConsultorio, MedicoEntity medico) {
 		this.nomeConsultorio = nomeConsultorio;
-		this.medico = medico;
 	}
 
 	@Id
@@ -41,24 +40,12 @@ public class AgendaEntity {
 			@JoinColumn(name = "idAgenda") }, inverseJoinColumns = { @JoinColumn(name = "idJornada") })
 	private List <JornadaDeTrabalhoEntity> semana;
 	
-	@JoinColumn(unique = true, nullable = false)
-	@OneToOne
-	private MedicoEntity medico;
-	
 	public String getNomeConsultorio() {
 		return nomeConsultorio;
 	}
 	
 	public void setNomeConsultorio(String nomeConsultorio) {
 		this.nomeConsultorio = nomeConsultorio;
-	}
-	
-	public MedicoEntity getMedico() {
-		return medico;
-	}
-	
-	public void setMedico(MedicoEntity medico) {
-		this.medico = medico;
 	}
 	
 	public Long getIdAgenda() {

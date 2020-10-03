@@ -28,7 +28,7 @@ public class MedicoRest {
 		return _service.getMedicos();
 	}
 	
-	@GetMapping("/medico")
+	@PostMapping("/medico")
 	public Optional<MedicoEntity> getMedico(@RequestParam Long idMedico){
 		return _service.getMedico(idMedico);
 	}

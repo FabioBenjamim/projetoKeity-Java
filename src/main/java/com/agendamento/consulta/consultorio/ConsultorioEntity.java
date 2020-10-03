@@ -1,7 +1,7 @@
 package com.agendamento.consulta.consultorio;
 
 import java.util.List;
-import java.util.UUID;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,8 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.agendamento.consulta.agenda.AgendaEntity;
 import com.agendamento.consulta.medico.MedicoEntity;
 
 @Entity
@@ -34,6 +36,9 @@ public class ConsultorioEntity {
 	private Long idConsultorio;
 
 	@Column
+	private String nomeConsultorio;
+
+	@Column
 	private String endereco;
 
 	@Column
@@ -46,6 +51,11 @@ public class ConsultorioEntity {
 	@JoinTable(name = "CONSULTORIO_MEDICO", joinColumns = {
 			@JoinColumn(name = "idConsultorio") }, inverseJoinColumns = { @JoinColumn(name = "idMedico") })
 	public List<MedicoEntity> medicos;
+
+	@OneToMany
+	@JoinTable(name = "CONSULTORIO_AGENDA", joinColumns = {
+			@JoinColumn(name = "idConsultorio") }, inverseJoinColumns = { @JoinColumn(name = "idAgenda") })
+	private Set<AgendaEntity> agenda;
 
 	public Long getIdConsultorio() {
 		return idConsultorio;
@@ -85,6 +95,22 @@ public class ConsultorioEntity {
 
 	public void setPontoReferencia(String pontoReferencia) {
 		this.pontoReferencia = pontoReferencia;
+	}
+
+	public String getNomeConsultorio() {
+		return nomeConsultorio;
+	}
+
+	public void setNomeConsultorio(String nomeConsultorio) {
+		this.nomeConsultorio = nomeConsultorio;
+	}
+
+	public Set<AgendaEntity> getAgenda() {
+		return agenda;
+	}
+
+	public void setAgenda(Set<AgendaEntity> agenda) {
+		this.agenda = agenda;
 	}
 
 }

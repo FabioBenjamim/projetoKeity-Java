@@ -9,9 +9,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class JornadaDeTrabalhoService {
+	
 	@Autowired
 	JornadaDeTrabalhoRepository _repository;
-
+	
 	public List<JornadaDeTrabalhoEntity> getJornadaDeTrabalho() {
 		return _repository.findAll();
 	}

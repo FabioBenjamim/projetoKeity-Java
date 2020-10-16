@@ -1,5 +1,6 @@
 package com.agendamento.consulta.agenda.api;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class AgendaRest {
 	}
 	
 	@PutMapping
-	public ResponseEntity atualiza(@RequestBody AgendaDTO agenda) {
-		return _service.atualizaAgenda(agenda);
+	public ResponseEntity atualiza(@RequestBody AgendaDTO agenda) throws ParseException {
+		return _service.atualizaAgenda(agenda, agenda.getNomePaciente());
 	}
 }

@@ -14,8 +14,11 @@ public class MedicoService {
 	@Autowired
 	MedicoRepository _repository;
 
-	public List<MedicoEntity> getMedicos() {
-		return _repository.findAll();
+	public Optional<MedicoEntity> getMedicos(Long idMedico) {
+		if(idMedico != null) {
+			return _repository.findById(idMedico);
+		}
+		return null;
 	}
 
 	public Optional<MedicoEntity> getMedico(Long idMedico) {

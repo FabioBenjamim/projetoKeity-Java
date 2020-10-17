@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.agendamento.consulta.medico.MedicoEntity;
 import com.agendamento.consulta.paciente.PacienteEntity;
 import com.agendamento.consulta.paciente.PacienteRepository;
 import com.agendamento.consulta.paciente.PacienteSerivce;
@@ -30,6 +32,11 @@ public class PacienteRest {
 	@GetMapping
 	public List<PacienteEntity> getPacientes() {
 		return _service.getPacientes();
+	}
+	
+	@PostMapping("/paciente")
+	public Optional<PacienteEntity> getPaciente(@RequestParam Long idPaciente){
+		return _service.getPaciente(idPaciente);
 	}
 	
 	@PostMapping

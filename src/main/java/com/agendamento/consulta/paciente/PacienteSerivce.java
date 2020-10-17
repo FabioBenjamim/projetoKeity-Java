@@ -24,6 +24,10 @@ public class PacienteSerivce {
 		return _repository.findByCpf(cpf);
 	}
 	
+	public Optional<PacienteEntity> getPaciente(Long idPaciente) {
+		return _repository.findById(idPaciente);
+	}
+	
 	public ResponseEntity createPaciente(PacienteEntity paciente) {
 		try {
 			_repository.save(paciente);

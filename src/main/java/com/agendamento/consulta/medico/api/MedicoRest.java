@@ -38,6 +38,11 @@ public class MedicoRest {
 		return _service.getMedico(cpf);
 	}
 	
+	@PostMapping("/medico")
+	public Optional<MedicoEntity> getMedico(@RequestParam Long idMedico){
+		return _service.getMedico(idMedico);
+	}
+	
 	@PostMapping
 	public ResponseEntity createMedico(@RequestBody MedicoEntity medico) {
 		return _service.createMedicos(medico);

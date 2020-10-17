@@ -39,6 +39,11 @@ public class PacienteRest {
 		return _service.getPaciente(cpf);
 	}
 	
+	@PostMapping("/paciente")
+	public Optional<PacienteEntity> getPaciente(@RequestParam Long idPaciente){
+		return _service.getPaciente(idPaciente);
+	}
+	
 	@PostMapping
 	public ResponseEntity createPaciente(@RequestBody PacienteEntity paciente) {
 		return _service.createPaciente(paciente);

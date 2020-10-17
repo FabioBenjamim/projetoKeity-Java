@@ -61,6 +61,12 @@ public class PacienteEntity {
 	@Column
 	private String senha;
 	
+	@Column
+	private String lat;
+	
+	@Column
+	private String lng;
+	
 	public String getRg() {
 		return rg;
 	}
@@ -180,6 +186,22 @@ public class PacienteEntity {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	public String getLat() {
+		return lat;
+	}
+
+	public void setLat(String lat) {
+		this.lat = lat;
+	}
+
+	public String getLng() {
+		return lng;
+	}
+
+	public void setLng(String lng) {
+		this.lng = lng;
+	}
 	
-	
+		
 }

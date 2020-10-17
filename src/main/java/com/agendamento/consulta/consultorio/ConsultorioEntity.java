@@ -45,6 +45,12 @@ public class ConsultorioEntity {
 
 	@Column
 	private String pontoReferencia;
+	
+	@Column
+	private String lat;
+	
+	@Column
+	private String lng;
 
 	@OneToMany
 	@JoinTable(name = "CONSULTORIO_AGENDA", joinColumns = {
@@ -97,6 +103,22 @@ public class ConsultorioEntity {
 
 	public void setAgenda(Set<AgendaEntity> agenda) {
 		this.agenda = agenda;
+	}
+
+	public String getLat() {
+		return lat;
+	}
+
+	public void setLat(String lat) {
+		this.lat = lat;
+	}
+
+	public String getLng() {
+		return lng;
+	}
+
+	public void setLng(String lng) {
+		this.lng = lng;
 	}
 
 }

@@ -33,8 +33,8 @@ public class MedicoRest {
 		return _service.getMedicos(idMedico.get());
 	}
 	
-	@PostMapping("/medico")
-	public Optional<MedicoEntity> getMedico(@RequestParam String cpf){
+	@PostMapping("/medico1")
+	public Optional<MedicoEntity> getMedico1(@RequestParam String cpf){
 		return _service.getMedico(cpf);
 	}
 	

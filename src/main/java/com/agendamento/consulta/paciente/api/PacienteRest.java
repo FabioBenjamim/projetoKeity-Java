@@ -34,8 +34,8 @@ public class PacienteRest {
 		return _service.getPacientes();
 	}
 	
-	@PostMapping("/paciente")
-	public Optional<PacienteEntity> getPaciente(@RequestParam String cpf){
+	@PostMapping("/paciente1")
+	public Optional<PacienteEntity> getPaciente1(@RequestParam String cpf){
 		return _service.getPaciente(cpf);
 	}
 	

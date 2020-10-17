@@ -35,8 +35,8 @@ public class PacienteRest {
 	}
 	
 	@PostMapping("/paciente")
-	public Optional<PacienteEntity> getPaciente(@RequestParam Long idPaciente){
-		return _service.getPaciente(idPaciente);
+	public Optional<PacienteEntity> getPaciente(@RequestParam String cpf){
+		return _service.getPaciente(cpf);
 	}
 	
 	@PostMapping

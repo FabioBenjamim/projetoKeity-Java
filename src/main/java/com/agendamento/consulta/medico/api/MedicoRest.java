@@ -34,8 +34,8 @@ public class MedicoRest {
 	}
 	
 	@PostMapping("/medico")
-	public Optional<MedicoEntity> getMedico(@RequestParam Long idMedico){
-		return _service.getMedico(idMedico);
+	public Optional<MedicoEntity> getMedico(@RequestParam String cpf){
+		return _service.getMedico(cpf);
 	}
 	
 	@PostMapping
@@ -58,12 +58,11 @@ public class MedicoRest {
         }
     }
 	
-	@PutMapping("/trocaSenha")
+	@PutMapping("/trocaSenha/{cpf}")
     public ResponseEntity atualizarMedico(@RequestBody MedicoEntity medico) {
-        if (medico.getIdMedico() != null) {
-            Optional<MedicoEntity> medicoChange = medicos.findById(medico.getIdMedico());
+        if (medico.getCpf() != null) {
+            Optional<MedicoEntity> medicoChange = medicos.findByCpf(medico.getCpf());
             medicoChange.get().atualizarMedico(medico);
-            System.out.println(medicoChange.get().getIdMedico() + "-" + medico.getSenha());
             medicos.save(medicoChange.get());
             return new ResponseEntity(HttpStatus.OK);
         }

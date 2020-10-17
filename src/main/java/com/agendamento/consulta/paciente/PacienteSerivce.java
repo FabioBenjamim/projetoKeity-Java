@@ -20,8 +20,8 @@ public class PacienteSerivce {
 		return _repository.findAll();
 	}
 	
-	public Optional<PacienteEntity> getPaciente(Long idPaciente) {
-		return _repository.findById(idPaciente);
+	public Optional<PacienteEntity> getPaciente(String cpf) {
+		return _repository.findByCpf(cpf);
 	}
 	
 	public ResponseEntity createPaciente(PacienteEntity paciente) {

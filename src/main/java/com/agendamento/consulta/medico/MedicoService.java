@@ -21,8 +21,8 @@ public class MedicoService {
 		return null;
 	}
 
-	public Optional<MedicoEntity> getMedico(Long idMedico) {
-		return _repository.findById(idMedico);
+	public Optional<MedicoEntity> getMedico(String cpf) {
+		return _repository.findByCpf(cpf);
 	}
 
 	public ResponseEntity createMedicos(MedicoEntity medico) {

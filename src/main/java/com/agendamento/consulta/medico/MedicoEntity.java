@@ -70,6 +70,12 @@ public class MedicoEntity {
 
 	@Column
 	private String especializacao;
+	
+	@Column
+	private String senha;
+	
+	@Column
+	private String cpf;
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "MEDICO_CONSULTORIO", joinColumns = {
@@ -211,6 +217,25 @@ public class MedicoEntity {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	
+	
+	
 
 //	public List<ConsultorioEntity> getConsultorios() {
 //		return consultorios;

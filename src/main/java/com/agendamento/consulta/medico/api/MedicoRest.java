@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.agendamento.consulta.medico.MedicoEntity;
+import com.agendamento.consulta.medico.MedicoRepository;
 import com.agendamento.consulta.medico.MedicoService;
 
 @RestController
@@ -24,9 +25,18 @@ public class MedicoRest {
 	@Autowired
 	MedicoService _service;
 	
+<<<<<<< Updated upstream
 	@GetMapping(value = {"/{idMedico}", ""})
 	public Optional<MedicoEntity> getMedicos(@PathVariable Optional<Long> idMedico) {
 		return _service.getMedicos(idMedico.get());
+=======
+	@Autowired
+    private MedicoRepository medicos;
+	
+	@GetMapping
+	public List<MedicoEntity> getMedicos() {
+		return _service.getMedicos();
+>>>>>>> Stashed changes
 	}
 	
 	@PostMapping("/medico")
@@ -43,5 +53,15 @@ public class MedicoRest {
 	public ResponseEntity adicionaConsultorios(@RequestBody MedicoEntity medico) {
 		return _service.adicionaConsultorios(medico);
 	}
+	
+	@PostMapping("/{Autentica}")
+    public ResponseEntity<Boolean> Login(@RequestBody MedicoEntity medicoRequest) {
+        Optional<MedicoEntity> medico = medicos.findByCpf(medicoRequest.getCpf());
+        if (medico != null && medico.get().getSenha().equals(medicoRequest.getSenha())) {
+            return ResponseEntity.ok(true);
+        } else {
+            return (ResponseEntity<Boolean>) ResponseEntity.badRequest();
+        }
+    }
 	
 }

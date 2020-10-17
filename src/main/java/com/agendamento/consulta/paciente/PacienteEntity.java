@@ -58,6 +58,9 @@ public class PacienteEntity {
 	@Column
 	private String rg;
 	
+	@Column
+	private String senha;
+	
 	public String getRg() {
 		return rg;
 	}
@@ -170,4 +173,13 @@ public class PacienteEntity {
 		this.estado = estado;
 	}
 
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	
+	
 }

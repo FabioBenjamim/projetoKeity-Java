@@ -3,6 +3,7 @@ package com.agendamento.consulta.medico.api;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +26,7 @@ public class MedicoRest {
 	MedicoService _service;
 	
 	@Autowired
-    private MedicoRepository medicos;
+    MedicoRepository medicos;
 	
 	@GetMapping(value = {"/{idMedico}", ""})
 	public Optional<MedicoEntity> getMedicos(@PathVariable Optional<Long> idMedico) {
@@ -55,6 +56,18 @@ public class MedicoRest {
         } else {
             return (ResponseEntity<Boolean>) ResponseEntity.badRequest();
         }
+    }
+	
+	@PutMapping("/trocaSenha")
+    public ResponseEntity atualizarMedico(@RequestBody MedicoEntity medico) {
+        if (medico.getIdMedico() != null) {
+            Optional<MedicoEntity> medicoChange = medicos.findById(medico.getIdMedico());
+            medicoChange.get().atualizarMedico(medico);
+            System.out.println(medicoChange.get().getIdMedico() + "-" + medico.getSenha());
+            medicos.save(medicoChange.get());
+            return new ResponseEntity(HttpStatus.OK);
+        }
+        return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
     }
 	
 }

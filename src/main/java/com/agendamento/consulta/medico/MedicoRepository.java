@@ -10,4 +10,7 @@ import com.agendamento.consulta.paciente.PacienteEntity;
 public interface MedicoRepository extends JpaRepository<MedicoEntity, Long>{
 	
 	Optional<MedicoEntity> findByCpf(String cpf);
+	
+	Optional<MedicoEntity> findById(Long idMedico);
+	
 }

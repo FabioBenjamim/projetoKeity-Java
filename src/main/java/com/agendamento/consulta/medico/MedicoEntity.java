@@ -1,8 +1,6 @@
 package com.agendamento.consulta.medico;
 
 import java.util.List;
-import java.util.Set;
-import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -84,6 +82,14 @@ public class MedicoEntity {
 
 	public List<ConsultorioEntity> getConsultorios() {
 		return consultorios;
+	}
+	
+	public void atualizarMedico(MedicoEntity medicos) {
+		this.senha = medicos.getSenha();
+		this.endereco = medicos.getEndereco();
+		this.estado = medicos.getEstado();
+		this.telefone = medicos.getTelefone();
+		this.sexo = medicos.getSexo();
 	}
 	
 	public void setConsultorios(List<ConsultorioEntity> consultorios) {

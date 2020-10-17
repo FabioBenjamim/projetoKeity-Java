@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.agendamento.consulta.medico.MedicoEntity;
 import com.agendamento.consulta.util.SexoEnum;
 
 @Entity
@@ -66,6 +67,14 @@ public class PacienteEntity {
 	
 	@Column
 	private String lng;
+	
+	public void atualizarPaciente(PacienteEntity pacientes) {
+		this.senha = pacientes.getSenha();
+		this.endereco = pacientes.getEndereco();
+		this.estado = pacientes.getEstado();
+		this.telefone = pacientes.getTelefone();
+		this.sexo = pacientes.getSexo();
+	}
 	
 	public String getRg() {
 		return rg;

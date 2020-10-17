@@ -1,6 +1,5 @@
 package com.agendamento.consulta.medico.api;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,18 +24,12 @@ public class MedicoRest {
 	@Autowired
 	MedicoService _service;
 	
-<<<<<<< Updated upstream
-	@GetMapping(value = {"/{idMedico}", ""})
-	public Optional<MedicoEntity> getMedicos(@PathVariable Optional<Long> idMedico) {
-		return _service.getMedicos(idMedico.get());
-=======
 	@Autowired
     private MedicoRepository medicos;
 	
-	@GetMapping
-	public List<MedicoEntity> getMedicos() {
-		return _service.getMedicos();
->>>>>>> Stashed changes
+	@GetMapping(value = {"/{idMedico}", ""})
+	public Optional<MedicoEntity> getMedicos(@PathVariable Optional<Long> idMedico) {
+		return _service.getMedicos(idMedico.get());
 	}
 	
 	@PostMapping("/medico")

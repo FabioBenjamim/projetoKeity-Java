@@ -20,10 +20,11 @@ public class horarioService {
 		return _repository.findByIdJornada(idJornada);
 	}
 
-	public List<horarioEntity> atualizaHorario(Long idHorario, String nomePaciente) {
+	public List<horarioEntity> atualizaHorario(Long idHorario, String nomePaciente, Long idPaciente) {
 		Optional<horarioEntity> getHorario = _repository.findById(idHorario);
 		getHorario.get().setNomePaciente(nomePaciente);
 		getHorario.get().setStatus("OCUPADO");
+		getHorario.get().setIdPaciente(idPaciente);
 		_repository.save(getHorario.get());
 		return null;
 	}

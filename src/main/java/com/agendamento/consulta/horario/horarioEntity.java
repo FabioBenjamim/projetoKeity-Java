@@ -46,6 +46,17 @@ public class horarioEntity {
 	@Column
 	private String nomePaciente;
 	
+	@Column(name = "id_paciente")
+	private Long idPaciente;
+	
+	public Long getIdPaciente() {
+		return idPaciente;
+	}
+	
+	public void setIdPaciente(Long idPaciente) {
+		this.idPaciente = idPaciente;
+	}
+	
 	public Long getIdHorario() {
 		return idHorario;
 	}

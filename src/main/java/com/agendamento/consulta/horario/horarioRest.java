@@ -25,4 +25,9 @@ public class horarioRest {
 	public List<horarioEntity> atualizaHorario(@PathVariable Long idHorario, @PathVariable String nomePaciente) {
 		return _service.atualizaHorario(idHorario, nomePaciente);
 	}
+	
+	@GetMapping("/paciente/{idPaciente}")
+	public List<horarioEntity> getHorariosPacientes(@PathVariable String idPaciente){
+		return _service.getHorariosPacientes(Long.parseLong(idPaciente));
+	}
 }

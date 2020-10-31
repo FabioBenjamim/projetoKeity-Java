@@ -28,4 +28,8 @@ public class horarioService {
 		return null;
 	}
 
+	public List<horarioEntity> getHorariosPacientes(Long idPaciente) {
+		return _repository.findByIdPaciente(idPaciente);
+	}
+
 }

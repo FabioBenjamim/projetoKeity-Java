@@ -1,5 +1,6 @@
 package com.agendamento.consulta.medico;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import com.agendamento.consulta.medico.api.dto.MedicoEspecializacoes;
 
 @Service
 public class MedicoService {
@@ -51,6 +54,17 @@ public class MedicoService {
 		} catch (Exception e) {
 			return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+	}
+
+	public List<MedicoEntity> getMedicoEspecialidade(String especializacao) {
+		return _repository.findByEspecializacao(especializacao);
+	}
+
+	public List<MedicoEspecializacoes> getEspecializacao() {
+		List<MedicoEspecializacoes> listaEspecializacoes = new ArrayList<MedicoEspecializacoes>();
+		List<MedicoEntity> listaMedicos = _repository.findAll();
+		listaMedicos.stream().forEach(c -> listaEspecializacoes.add(new MedicoEspecializacoes(c.getEspecializacao())));
+		return listaEspecializacoes;
 	}
 	
 //	public ResponseEntity adicionaMedico(ConsultorioEntity consultorio) {

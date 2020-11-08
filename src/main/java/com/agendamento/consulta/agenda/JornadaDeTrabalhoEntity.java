@@ -21,10 +21,10 @@ public class JornadaDeTrabalhoEntity {
 		// TODO Auto-generated constructor stub
 	}
 
-	public JornadaDeTrabalhoEntity(DiaDaSemanaEnum diaDaSemana, String inicioExpediente,
+	public JornadaDeTrabalhoEntity(String dia, String inicioExpediente,
 			String fimExpediente) throws ParseException {
 		super();
-		this.diaDaSemana = diaDaSemana;
+		this.dia = dia;
 		this.inicioExpediente = inicioExpediente;
 		this.fimExpediente = fimExpediente;
 	}
@@ -34,7 +34,7 @@ public class JornadaDeTrabalhoEntity {
 	private Long idJornada;
 
 	@Column
-	private DiaDaSemanaEnum diaDaSemana;
+	private String dia;
 
 	@Column
 	private String inicioExpediente;
@@ -50,16 +50,16 @@ public class JornadaDeTrabalhoEntity {
 		this.idJornada = idJornada;
 	}
 
-	public DiaDaSemanaEnum getDiaDaSemana() {
-		return diaDaSemana;
-	}
-
-	public void setDiaDaSemana(DiaDaSemanaEnum diaDaSemana) {
-		this.diaDaSemana = diaDaSemana;
-	}
-
 	public String getInicioExpediente() {
 		return inicioExpediente;
+	}
+	
+	public String getDia() {
+		return dia;
+	}
+	
+	public void setDia(String dia) {
+		this.dia = dia;
 	}
 	
 	public void setInicioExpediente(String inicioExpediente) {

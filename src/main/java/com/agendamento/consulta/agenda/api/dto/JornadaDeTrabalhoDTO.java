@@ -8,7 +8,7 @@ import com.agendamento.consulta.util.DiaDaSemanaEnum;
 
 public class JornadaDeTrabalhoDTO {
 
-	private DiaDaSemanaEnum diaDaSemana;
+	private String diaDaSemana;
 	private String inicioExpediente;
 	private String fimExpediente;
 	
@@ -16,18 +16,18 @@ public class JornadaDeTrabalhoDTO {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public JornadaDeTrabalhoDTO(DiaDaSemanaEnum diaDaSemana, String inicioExpediente, String fimExpediente) {
+	public JornadaDeTrabalhoDTO(String diaDaSemana, String inicioExpediente, String fimExpediente) {
 		super();
 		this.diaDaSemana = diaDaSemana;
 		this.inicioExpediente = inicioExpediente;
 		this.fimExpediente = fimExpediente;
 	}
 
-	public DiaDaSemanaEnum getDiaDaSemana() {
+	public String getDiaDaSemana() {
 		return diaDaSemana;
 	}
-
-	public void setDiaDaSemana(DiaDaSemanaEnum diaDaSemana) {
+	
+	public void setDiaDaSemana(String diaDaSemana) {
 		this.diaDaSemana = diaDaSemana;
 	}
 

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.agendamento.consulta.lastLogin.LastLoginService;
 import com.agendamento.consulta.medico.MedicoEntity;
 import com.agendamento.consulta.medico.MedicoRepository;
 import com.agendamento.consulta.medico.MedicoService;
@@ -26,6 +27,9 @@ public class MedicoRest {
 
 	@Autowired
 	MedicoService _service;
+	
+	@Autowired
+	LastLoginService _serviceLastLoginMedico;
 
 	@Autowired
 	MedicoRepository medicos;
@@ -69,6 +73,7 @@ public class MedicoRest {
 	public ResponseEntity<Boolean> Login(@RequestBody MedicoEntity medicoRequest) {
 		Optional<MedicoEntity> medico = medicos.findByCpf(medicoRequest.getCpf());
 		if (medico != null && medico.get().getSenha().equals(medicoRequest.getSenha())) {
+			_serviceLastLoginMedico.saveLastLoginMedico(medico.get());
 			return ResponseEntity.ok(true);
 		} else {
 			return (ResponseEntity<Boolean>) ResponseEntity.badRequest();

@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.agendamento.consulta.medico.Avaliacao;
 import com.agendamento.consulta.medico.MedicoEntity;
 import com.agendamento.consulta.util.SexoEnum;
 
@@ -67,6 +68,17 @@ public class PacienteEntity {
 	
 	@Column
 	private String lng;
+	
+	@Column
+	private Avaliacao avaliacao;
+	
+	public Avaliacao getAvaliacao() {
+		return avaliacao;
+	}
+	
+	public void setAvaliacao(Avaliacao avaliacao) {
+		this.avaliacao = avaliacao;
+	}
 	
 	public void atualizarPaciente(PacienteEntity pacientes) {
 		this.senha = pacientes.getSenha();

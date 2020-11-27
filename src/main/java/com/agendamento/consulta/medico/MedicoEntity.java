@@ -74,6 +74,17 @@ public class MedicoEntity {
 	
 	@Column
 	private String cpf;
+	
+	@Column 
+	private Avaliacao avaliacao;
+	
+	public Avaliacao getAvaliacao() {
+		return avaliacao;
+	}
+	
+	public void setAvaliacao(Avaliacao avaliacao) {
+		this.avaliacao = avaliacao;
+	}
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "MEDICO_CONSULTORIO", joinColumns = {

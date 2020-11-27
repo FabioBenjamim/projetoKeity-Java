@@ -70,13 +70,13 @@ public class PacienteEntity {
 	private String lng;
 	
 	@Column
-	private Avaliacao avaliacao;
+	private Double avaliacao;
 	
-	public Avaliacao getAvaliacao() {
+	public Double getAvaliacao() {
 		return avaliacao;
 	}
 	
-	public void setAvaliacao(Avaliacao avaliacao) {
+	public void setAvaliacao(Double avaliacao) {
 		this.avaliacao = avaliacao;
 	}
 	
@@ -86,6 +86,7 @@ public class PacienteEntity {
 		this.estado = pacientes.getEstado();
 		this.telefone = pacientes.getTelefone();
 		this.sexo = pacientes.getSexo();
+		this.avaliacao = (this.avaliacao+avaliacao)/2;
 	}
 	
 	public String getRg() {

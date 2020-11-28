@@ -1,5 +1,6 @@
 package com.agendamento.consulta.paciente;
 
+import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -70,13 +71,13 @@ public class PacienteEntity {
 	private String lng;
 	
 	@Column
-	private Double avaliacao;
+	private List<Double> avaliacao;
 	
-	public Double getAvaliacao() {
+	public List<Double> getAvaliacao() {
 		return avaliacao;
 	}
 	
-	public void setAvaliacao(Double avaliacao) {
+	public void setAvaliacao(List<Double> avaliacao) {
 		this.avaliacao = avaliacao;
 	}
 	
@@ -86,7 +87,7 @@ public class PacienteEntity {
 		this.estado = pacientes.getEstado();
 		this.telefone = pacientes.getTelefone();
 		this.sexo = pacientes.getSexo();
-		this.avaliacao = (this.avaliacao+avaliacao)/2;
+		this.avaliacao.addAll(avaliacao);
 	}
 	
 	public String getRg() {

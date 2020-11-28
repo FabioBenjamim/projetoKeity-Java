@@ -76,13 +76,13 @@ public class MedicoEntity {
 	private String cpf;
 	
 	@Column 
-	private Double avaliacao;
+	private List<Double> avaliacao;
 	
-	public Double getAvaliacao() {
+	public List<Double> getAvaliacao() {
 		return avaliacao;
 	}
 	
-	public void setAvaliacao(Double avaliacao) {
+	public void setAvaliacao(List<Double> avaliacao) {
 		this.avaliacao = avaliacao;
 	}
 
@@ -101,7 +101,7 @@ public class MedicoEntity {
 		this.estado = medicos.getEstado();
 		this.telefone = medicos.getTelefone();
 		this.sexo = medicos.getSexo();
-		this.avaliacao = (this.avaliacao+avaliacao)/2;
+		this.avaliacao.addAll(avaliacao);
 	}
 	
 	public void setConsultorios(List<ConsultorioEntity> consultorios) {

@@ -28,6 +28,16 @@ public class horarioService {
 		_repository.save(getHorario.get());
 		return null;
 	}
+	
+	public List<horarioEntity> atualizaHorarios(Long idHorario, String nomePaciente, Long idPaciente, String consultaStatus) {
+		Optional<horarioEntity> getHorario = _repository.findById(idHorario);
+		getHorario.get().setNomePaciente(nomePaciente);
+		getHorario.get().setStatus("OCUPADO");
+		getHorario.get().setIdPaciente(idPaciente);
+		getHorario.get().setConsultaRealizada(consultaStatus);
+		_repository.save(getHorario.get());
+		return null;
+	}
 
 	public List<horarioEntity> getHorariosPacientes(Long idPaciente) {
 		return _repository.findByIdPaciente(idPaciente);

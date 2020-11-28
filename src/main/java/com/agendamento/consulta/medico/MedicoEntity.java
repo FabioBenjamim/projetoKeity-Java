@@ -1,9 +1,11 @@
 package com.agendamento.consulta.medico;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -74,18 +76,18 @@ public class MedicoEntity {
 	
 	@Column
 	private String cpf;
+
+	@ElementCollection
+	private Collection<Integer> avaliacao;
 	
-	@Column 
-	private List<Double> avaliacao;
-	
-	public List<Double> getAvaliacao() {
+	public Collection<Integer> getAvaliacao() {
 		return avaliacao;
 	}
 	
-	public void setAvaliacao(List<Double> avaliacao) {
+	public void setAvaliacao(Collection<Integer> avaliacao) {
 		this.avaliacao = avaliacao;
 	}
-
+	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "MEDICO_CONSULTORIO", joinColumns = {
 			@JoinColumn(name = "idMedico") }, inverseJoinColumns = { @JoinColumn(name = "idConsultorio") })
@@ -101,7 +103,6 @@ public class MedicoEntity {
 		this.estado = medicos.getEstado();
 		this.telefone = medicos.getTelefone();
 		this.sexo = medicos.getSexo();
-		this.avaliacao.addAll(avaliacao);
 	}
 	
 	public void setConsultorios(List<ConsultorioEntity> consultorios) {

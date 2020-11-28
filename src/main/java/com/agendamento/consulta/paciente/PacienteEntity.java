@@ -1,16 +1,17 @@
 package com.agendamento.consulta.paciente;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.agendamento.consulta.medico.Avaliacao;
 import com.agendamento.consulta.medico.MedicoEntity;
 import com.agendamento.consulta.util.SexoEnum;
 
@@ -70,14 +71,14 @@ public class PacienteEntity {
 	@Column
 	private String lng;
 	
-	@Column
-	private List<Double> avaliacao;
+	@ElementCollection
+	private Collection<Integer> avaliacao;
 	
-	public List<Double> getAvaliacao() {
+	public Collection<Integer> getAvaliacao() {
 		return avaliacao;
 	}
 	
-	public void setAvaliacao(List<Double> avaliacao) {
+	public void setAvaliacao(Collection<Integer> avaliacao) {
 		this.avaliacao = avaliacao;
 	}
 	
@@ -87,7 +88,6 @@ public class PacienteEntity {
 		this.estado = pacientes.getEstado();
 		this.telefone = pacientes.getTelefone();
 		this.sexo = pacientes.getSexo();
-		this.avaliacao.addAll(avaliacao);
 	}
 	
 	public String getRg() {

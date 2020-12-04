@@ -16,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.agendamento.consulta.consultorio.ConsultorioEntity;
+import com.agendamento.consulta.notas.NotaEntity;
 import com.agendamento.consulta.util.SexoEnum;
 
 @Entity
@@ -76,22 +77,24 @@ public class MedicoEntity {
 	
 	@Column
 	private String cpf;
-
-	@ElementCollection
-	private Collection<Integer> avaliacao;
 	
-	public Collection<Integer> getAvaliacao() {
-		return avaliacao;
-	}
-	
-	public void setAvaliacao(Collection<Integer> avaliacao) {
-		this.avaliacao = avaliacao;
-	}
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "MEDICO_NOTA", joinColumns = {
+			@JoinColumn(name = "idMedico") }, inverseJoinColumns = { @JoinColumn(name = "idNota") })
+	public List<NotaEntity> notas;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "MEDICO_CONSULTORIO", joinColumns = {
 			@JoinColumn(name = "idMedico") }, inverseJoinColumns = { @JoinColumn(name = "idConsultorio") })
 	public List<ConsultorioEntity> consultorios;
+	
+	public List<NotaEntity> getNotas() {
+		return notas;
+	}
+	
+	public void setNotas(List<NotaEntity> notas) {
+		this.notas = notas;
+	}
 
 	public List<ConsultorioEntity> getConsultorios() {
 		return consultorios;

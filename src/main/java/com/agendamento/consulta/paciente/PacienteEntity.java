@@ -4,15 +4,20 @@ import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.agendamento.consulta.medico.MedicoEntity;
+import com.agendamento.consulta.notas.NotaEntity;
 import com.agendamento.consulta.util.SexoEnum;
 
 @Entity
@@ -71,15 +76,17 @@ public class PacienteEntity {
 	@Column
 	private String lng;
 	
-	@ElementCollection
-	private Collection<Integer> avaliacao;
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "Paciente_Nota", joinColumns = {
+			@JoinColumn(name = "idPaciente") }, inverseJoinColumns = { @JoinColumn(name = "idNota") })
+	public List<NotaEntity> notas;
 	
-	public Collection<Integer> getAvaliacao() {
-		return avaliacao;
+	public List<NotaEntity> getNotas() {
+		return notas;
 	}
 	
-	public void setAvaliacao(Collection<Integer> avaliacao) {
-		this.avaliacao = avaliacao;
+	public void setNotas(List<NotaEntity> notas) {
+		this.notas = notas;
 	}
 	
 	public void atualizarPaciente(PacienteEntity pacientes) {

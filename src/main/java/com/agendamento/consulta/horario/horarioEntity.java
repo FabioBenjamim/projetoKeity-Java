@@ -1,15 +1,22 @@
 package com.agendamento.consulta.horario;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.agendamento.consulta.agenda.JornadaDeTrabalhoEntity;
+import com.agendamento.consulta.medico.MedicoEntity;
+import com.agendamento.consulta.notas.NotaEntity;
 import com.agendamento.consulta.util.StatusEnum;
 
 @Entity
@@ -49,8 +56,19 @@ public class horarioEntity {
 	@Column
 	private String consultaRealizada;
 	
+	@Column
+	private String idMedico;
+	
 	@Column(name = "id_paciente")
 	private Long idPaciente;
+	
+	public String getIdMedico() {
+		return idMedico;
+	}
+	
+	public void setIdMedico(String idMedico) {
+		this.idMedico = idMedico;
+	}
 	
 	public String getConsultaRealizada() {
 		return consultaRealizada;

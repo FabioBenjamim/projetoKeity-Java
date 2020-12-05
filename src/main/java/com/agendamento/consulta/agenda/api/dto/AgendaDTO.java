@@ -5,6 +5,15 @@ public class AgendaDTO {
 	private Long idAgenda;
 	private String nomePaciente;
 	private JornadaDeTrabalhoDTO semana;
+	private Long idMedico;
+	
+	public Long getIdMedico() {
+		return idMedico;
+	}
+	
+	public void setIdMedico(Long idMedico) {
+		this.idMedico = idMedico;
+	}
 	
 	public String getNomePaciente() {
 		return nomePaciente;

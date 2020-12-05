@@ -28,12 +28,13 @@ public class horarioEntity {
 	}
 	
 	public horarioEntity(JornadaDeTrabalhoEntity jornada, String horario,
-			String nomePaciente) {
+			String nomePaciente, Long idMedico) {
 		super();
 		this.jornada = jornada;
 		this.horario = horario;
 		this.status = "LIVRE";
 		this.nomePaciente = nomePaciente;
+		this.idMedico = idMedico;
 	}
 
 	@Id
@@ -57,16 +58,16 @@ public class horarioEntity {
 	private String consultaRealizada;
 	
 	@Column
-	private String idMedico;
+	private Long idMedico;
 	
 	@Column(name = "id_paciente")
 	private Long idPaciente;
 	
-	public String getIdMedico() {
+	public Long getIdMedico() {
 		return idMedico;
 	}
 	
-	public void setIdMedico(String idMedico) {
+	public void setIdMedico(Long idMedico) {
 		this.idMedico = idMedico;
 	}
 	

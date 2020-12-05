@@ -80,10 +80,10 @@ public class MedicoRest {
 		}
 	}
 
-	@PutMapping("/trocaSenha/{cpf}")
+	@PutMapping("/trocaSenha")
 	public ResponseEntity atualizarMedico(@RequestBody MedicoEntity medico) {
-		if (medico.getCpf() != null) {
-			Optional<MedicoEntity> medicoChange = medicos.findByCpf(medico.getCpf());
+		if (medico.getIdMedico() != null) {
+			Optional<MedicoEntity> medicoChange = medicos.findById(medico.getIdMedico());
 			medicoChange.get().atualizarMedico(medico);
 			medicos.save(medicoChange.get());
 			return new ResponseEntity(HttpStatus.OK);

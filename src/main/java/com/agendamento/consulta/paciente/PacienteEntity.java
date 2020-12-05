@@ -76,27 +76,26 @@ public class PacienteEntity {
 	@Column
 	private String lng;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "Paciente_Nota", joinColumns = {
-			@JoinColumn(name = "idPaciente") }, inverseJoinColumns = { @JoinColumn(name = "idNota") })
-	public List<NotaEntity> notas;
+	@ElementCollection
+	private Collection<Integer> avaliacao;
 	
-	public List<NotaEntity> getNotas() {
-		return notas;
-	}
-	
-	public void setNotas(List<NotaEntity> notas) {
-		this.notas = notas;
-	}
+
 	
 	public void atualizarPaciente(PacienteEntity pacientes) {
-		this.senha = pacientes.getSenha();
-		this.endereco = pacientes.getEndereco();
-		this.estado = pacientes.getEstado();
-		this.telefone = pacientes.getTelefone();
-		this.sexo = pacientes.getSexo();
+		this.avaliacao.addAll(pacientes.getAvaliacao());
 	}
 	
+	
+	public Collection<Integer> getAvaliacao() {
+		return avaliacao;
+	}
+
+
+	public void setAvaliacao(Collection<Integer> avaliacao) {
+		this.avaliacao = avaliacao;
+	}
+
+
 	public String getRg() {
 		return rg;
 	}

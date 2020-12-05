@@ -27,6 +27,8 @@ public class AgendaService {
 	
 	@Autowired
 	horarioService _serviceHorario;
+	
+	private Long idMedico;
 
 	public List<AgendaEntity> getAgendas() {
 		return _repository.findAll();
@@ -82,8 +84,9 @@ public class AgendaService {
 					cargaHorariaMinutosAux += 15;
 					countAux++;
 				}
+				idMedico = agenda.getIdMedico();
 				List<horarioEntity> AgendaHorarios = new ArrayList<horarioEntity>();
-				agendaHorario.stream().forEach(c -> AgendaHorarios.add(new horarioEntity(jornada, c, nomePaciente)));				
+				agendaHorario.stream().forEach(c -> AgendaHorarios.add(new horarioEntity(jornada, c, nomePaciente, idMedico)));				
 				
 				_repository.save(agendaUpdate.get());
 				_serviceHorario.createHorarios(AgendaHorarios);

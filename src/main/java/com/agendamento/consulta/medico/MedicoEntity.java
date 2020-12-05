@@ -95,17 +95,24 @@ public class MedicoEntity {
 	public void setNotas(List<NotaEntity> notas) {
 		this.notas = notas;
 	}
+	
+	@ElementCollection
+	private Collection<Integer> avaliacao;
+
+	public Collection<Integer> getAvaliacao() {
+		return avaliacao;
+	}
+
+	public void setAvaliacao(Collection<Integer> avaliacao) {
+		this.avaliacao = avaliacao;
+	}
 
 	public List<ConsultorioEntity> getConsultorios() {
 		return consultorios;
 	}
 	
 	public void atualizarMedico(MedicoEntity medicos) {
-		this.senha = medicos.getSenha();
-		this.endereco = medicos.getEndereco();
-		this.estado = medicos.getEstado();
-		this.telefone = medicos.getTelefone();
-		this.sexo = medicos.getSexo();
+		this.avaliacao.addAll(medicos.getAvaliacao());
 	}
 	
 	public void setConsultorios(List<ConsultorioEntity> consultorios) {
